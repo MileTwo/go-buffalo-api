@@ -7,10 +7,6 @@ ENV GOPROXY http://proxy.golang.org
 RUN mkdir -p /src/go_buffalo_api
 WORKDIR /src/go_buffalo_api
 
-# this will cache the npm install step, unless package.json changes
-ADD package.json .
-ADD yarn.lock .
-RUN yarn install --no-progress
 # Copy the Go Modules manifests
 COPY go.mod go.mod
 COPY go.sum go.sum

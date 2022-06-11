@@ -1,19 +1,18 @@
 package actions
 
 import (
-	"net/http"
-
 	"go_buffalo_api/locales"
 	"go_buffalo_api/models"
-	"go_buffalo_api/public"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo-pop/v3/pop/popmw"
 	"github.com/gobuffalo/envy"
-	csrf "github.com/gobuffalo/mw-csrf"
+	contenttype "github.com/gobuffalo/mw-contenttype"
 	forcessl "github.com/gobuffalo/mw-forcessl"
 	i18n "github.com/gobuffalo/mw-i18n/v2"
 	paramlogger "github.com/gobuffalo/mw-paramlogger"
+	"github.com/gobuffalo/x/sessions"
+	"github.com/rs/cors"
 	"github.com/unrolled/secure"
 )
 
@@ -42,7 +41,11 @@ var (
 func App() *buffalo.App {
 	if app == nil {
 		app = buffalo.New(buffalo.Options{
-			Env:         ENV,
+			Env:          ENV,
+			SessionStore: sessions.Null{},
+			PreWares: []buffalo.PreWare{
+				cors.Default().Handler,
+			},
 			SessionName: "_go_buffalo_api_session",
 		})
 
@@ -52,20 +55,14 @@ func App() *buffalo.App {
 		// Log request parameters (filters apply).
 		app.Use(paramlogger.ParameterLogger)
 
-		// Protect against CSRF attacks. https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
-		// Remove to disable this.
-		app.Use(csrf.New)
+		// Set the request content type to JSON
+		app.Use(contenttype.Set("application/json"))
 
 		// Wraps each request in a transaction.
 		//   c.Value("tx").(*pop.Connection)
 		// Remove to disable this.
 		app.Use(popmw.Transaction(models.DB))
-		// Setup and use translations:
-		app.Use(translations())
-
 		app.GET("/", HomeHandler)
-
-		app.ServeFiles("/", http.FS(public.FS())) // serve files from the public directory
 	}
 
 	return app
