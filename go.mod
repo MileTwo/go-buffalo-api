@@ -10,9 +10,12 @@ require (
 	github.com/gobuffalo/mw-forcessl v0.0.0-20220514125302-be60179938a4
 	github.com/gobuffalo/mw-i18n/v2 v2.0.1
 	github.com/gobuffalo/mw-paramlogger v1.0.0
+	github.com/gobuffalo/pop v4.13.1+incompatible
 	github.com/gobuffalo/pop/v6 v6.0.4
 	github.com/gobuffalo/suite/v4 v4.0.2
+	github.com/gobuffalo/validate/v3 v3.3.1
 	github.com/gobuffalo/x v0.1.0
+	github.com/gofrs/uuid v4.2.0+incompatible
 	github.com/markbates/grift v1.5.0
 	github.com/rs/cors v1.8.2
 	github.com/unrolled/secure v1.10.0
@@ -41,8 +44,6 @@ require (
 	github.com/gobuffalo/nulls v0.4.1 // indirect
 	github.com/gobuffalo/plush/v4 v4.1.11 // indirect
 	github.com/gobuffalo/tags/v3 v3.1.2 // indirect
-	github.com/gobuffalo/validate/v3 v3.3.1 // indirect
-	github.com/gofrs/uuid v4.2.0+incompatible // indirect
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
@@ -72,6 +73,7 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/monoculum/formam v3.5.5+incompatible // indirect
 	github.com/nicksnyder/go-i18n v1.10.1 // indirect
+	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pelletier/go-toml v1.9.3 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
@@ -89,6 +91,7 @@ require (
 	golang.org/x/sys v0.0.0-20211205182925-97ca703d548d // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
+	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
