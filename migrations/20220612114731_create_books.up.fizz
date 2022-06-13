@@ -1,0 +1,7 @@
+create_table("books") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("author_id", "uuid")
+	t.Column("title", "string")
+	t.ForeignKey("author_id", {"authors": ["id"]}, {"on_delete": "cascade"})
+	t.Timestamps()
+}

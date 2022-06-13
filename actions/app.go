@@ -63,6 +63,8 @@ func App() *buffalo.App {
 		// Remove to disable this.
 		app.Use(popmw.Transaction(models.DB))
 		app.GET("/", HomeHandler)
+		app.Resource("/authors", AuthorsResource{})
+		app.Resource("/books", BooksResource{})
 	}
 
 	return app
